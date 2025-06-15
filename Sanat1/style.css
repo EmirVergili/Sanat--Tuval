@@ -68,7 +68,9 @@ input[type="color"] {
 
 input[type="range"] {
     width: 100%; /* Genişliği %100 yaptım. */
-    -webkit-appearance: none; /* Webkit tarayıcılarında varsayılan görünümü kaldırdım. */
+    -webkit-appearance: none; /* WebKit tabanlı tarayıcılar için */
+    -moz-appearance: none;    /* Mozilla tabanlı tarayıcılar için */
+    appearance: none;         /* Standart hale gelmiş tüm tarayıcılar için *//* Webkit tarayıcılarında varsayılan görünümü kaldırdım. */
     height: 8px; /* Yüksekliği 8px yaptım. */
     background: #555; /* Arka plan rengini gri yaptım. */
     border-radius: 5px; /* Köşeleri yuvarladım. */
