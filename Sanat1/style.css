@@ -1,0 +1,180 @@
+body {
+    margin: 0; /* Sayfa kenar boşluğunu sıfırladım. */
+    overflow: hidden; /* Taşmayı gizledim, kaydırma çubuklarını önledim. */
+    background-color: #000; /* Arka plan rengini siyah yaptım. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Yazı tipini belirledim. */
+    color: #e0e0e0; /* Varsayılan metin rengini açık gri yaptım. */
+    display: flex; /* Flexbox düzenini kullandım. */
+    justify-content: center; /* İçeriği yatayda ortaladım. */
+    align-items: center; /* İçeriği dikeyde ortaladım. */
+    height: 100vh; /* Gövdenin yüksekliğini ekranın tamamı yaptım. */
+    user-select: none; /* Kullanıcının metin seçmesini engelledim. */
+}
+
+/* Canvas Stili */
+canvas {
+    display: block; /* Kanvası blok seviye element yaptım. */
+    background-color: #000; /* Kanvas arka planını siyah yaptım. */
+    cursor: crosshair; /* Fare imlecini artı işareti yaptım. */
+}
+
+/* Kontrol Paneli Stilleri */
+.kontrollerPaneli { /* HTML'deki 'kontrollerPaneli' sınıfına göre düzenledim. */
+    position: absolute; /* Paneli mutlak konumlandırdım. */
+    top: 15px; /* Üstten 15px boşluk bıraktım. */
+    right: 15px; /* Sağdan 15px boşluk bıraktım. */
+    background-color: rgba(30, 30, 30, 0.85); /* Hafif şeffaf koyu gri arka plan verdim. */
+    padding: 20px; /* İç boşluğu 20px yaptım. */
+    border-radius: 10px; /* Köşeleri yuvarladım. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Hafif bir gölge ekledim. */
+    display: flex; /* Flexbox düzenini kullandım. */
+    flex-direction: column; /* Öğeleri dikey hizaladım. */
+    gap: 15px; /* Öğeler arasında 15px boşluk bıraktım. */
+    max-width: 280px; /* Maksimum genişliği 280px yaptım. */
+    box-sizing: border-box; /* Kutu modelini içerik kutusu olarak ayarladım. */
+    transition: all 0.3s ease-in-out; /* Tüm geçişlere yumuşak bir süre verdim. */
+}
+
+.kontrollerPaneli h2 { /* HTML'deki 'kontrollerPaneli' içindeki h2'ye göre düzenledim. */
+    margin-top: 0; /* Üst kenar boşluğunu sıfırladım. */
+    margin-bottom: 15px; /* Alt kenar boşluğunu 15px yaptım. */
+    color: #00e676; /* Başlık rengini parlak yeşil yaptım. */
+    text-align: center; /* Başlığı ortaladım. */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Altına ince bir çizgi ekledim. */
+    padding-bottom: 10px; /* Çizgi altına 10px boşluk bıraktım. */
+}
+
+.kontrolGrubu { /* HTML'deki 'kontrolGrubu' sınıfına göre düzenledim. */
+    display: flex; /* Flexbox düzenini kullandım. */
+    flex-direction: column; /* Öğeleri dikey hizaladım. */
+    gap: 8px; /* Öğeler arasında 8px boşluk bıraktım. */
+}
+
+.kontrolGrubu label { /* HTML'deki 'kontrolGrubu' içindeki label'a göre düzenledim. */
+    font-size: 0.95em; /* Yazı boyutunu biraz küçülttüm. */
+    color: #a0a0a0; /* Etiket rengini gri yaptım. */
+}
+
+/* Input ve Range Stilleri */
+input[type="color"] {
+    width: 100%; /* Genişliği %100 yaptım. */
+    height: 40px; /* Yüksekliği 40px yaptım. */
+    border: 1px solid #555; /* Kenarlık ekledim. */
+    border-radius: 5px; /* Köşeleri yuvarladım. */
+    padding: 2px; /* İç boşluğu 2px yaptım. */
+    cursor: pointer; /* Fare imlecini işaretçi yaptım. */
+    background-color: #333; /* Arka plan rengini koyu gri yaptım. */
+}
+
+input[type="range"] {
+    width: 100%; /* Genişliği %100 yaptım. */
+    -webkit-appearance: none; /* Webkit tarayıcılarında varsayılan görünümü kaldırdım. */
+    height: 8px; /* Yüksekliği 8px yaptım. */
+    background: #555; /* Arka plan rengini gri yaptım. */
+    border-radius: 5px; /* Köşeleri yuvarladım. */
+    outline: none; /* Odaklandığında dış çizgiyi kaldırdım. */
+    opacity: 0.9; /* Şeffaflığı %90 yaptım. */
+    transition: opacity .2s; /* Şeffaflık geçişine süre verdim. */
+}
+
+input[type="range"]:hover {
+    opacity: 1; /* Üzerine gelindiğinde şeffaflığı kaldırdım. */
+}
+
+/* Range thumb (tutacak) stili */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Webkit tarayıcılarında varsayılan görünümü kaldırdım. */
+    appearance: none; /* Varsayılan görünümü kaldırdım. */
+    width: 20px; /* Genişliği 20px yaptım. */
+    height: 20px; /* Yüksekliği 20px yaptım. */
+    background: #00e676; /* Rengini parlak yeşil yaptım. */
+    border-radius: 50%; /* Daire şekli verdim. */
+    cursor: pointer; /* Fare imlecini işaretçi yaptım. */
+    box-shadow: 0 0 5px rgba(0, 230, 118, 0.7); /* Parlak yeşil bir gölge ekledim. */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px; /* Genişliği 20px yaptım. */
+    height: 20px; /* Yüksekliği 20px yaptım. */
+    background: #00e676; /* Rengini parlak yeşil yaptım. */
+    border-radius: 50%; /* Daire şekli verdim. */
+    cursor: pointer; /* Fare imlecini işaretçi yaptım. */
+    box-shadow: 0 0 5px rgba(0, 230, 118, 0.7); /* Parlak yeşil bir gölge ekledim. */
+}
+
+.dugmeGrubu { /* HTML'deki 'dugmeGrubu' sınıfına göre düzenledim. */
+    display: flex; /* Flexbox düzenini kullandım. */
+    gap: 10px; /* Düğmeler arasında 10px boşluk bıraktım. */
+    margin-top: 10px; /* Üstten 10px boşluk bıraktım. */
+}
+
+button {
+    flex-grow: 1; /* Düğmelerin eşit genişlikte büyümesini sağladım. */
+    padding: 10px 15px; /* İç boşluğu ayarladım. */
+    border: none; /* Kenarlığı kaldırdım. */
+    border-radius: 5px; /* Köşeleri yuvarladım. */
+    cursor: pointer; /* Fare imlecini işaretçi yaptım. */
+    font-size: 1em; /* Yazı boyutunu ayarladım. */
+    font-weight: bold; /* Yazı tipini kalın yaptım. */
+    transition: background-color 0.2s ease, transform 0.1s ease; /* Arka plan rengi ve dönüşüm geçişlerine süre verdim. */
+}
+
+button#temizleDugmesi { /* HTML'deki 'temizleDugmesi' ID'sine göre düzenledim. */
+    background-color: #dc3545; /* Temizle düğmesinin arka plan rengini kırmızı yaptım. */
+    color: white; /* Metin rengini beyaz yaptım. */
+}
+
+button#temizleDugmesi:hover { /* Temizle düğmesinin üzerine gelindiğinde daha koyu kırmızı yaptım. */
+    background-color: #c82333; /* Üzerine gelindiğinde daha koyu kırmızı yaptım. */
+    transform: translateY(-2px); /* Düğmeyi 2px yukarı hareket ettirdim. */
+}
+
+button#kaydetDugmesi { /* HTML'deki 'kaydetDugmesi' ID'sine göre düzenledim. */
+    background-color: #28a745; /* Kaydet düğmesinin arka plan rengini yeşil yaptım. */
+    color: white; /* Metin rengini beyaz yaptım. */
+}
+
+button#kaydetDugmesi:hover { /* Kaydet düğmesinin üzerine gelindiğinde daha koyu yeşil yaptım. */
+    background-color: #218838; /* Üzerine gelindiğinde daha koyu yeşil yaptım. */
+    transform: translateY(-2px); /* Düğmeyi 2px yukarı hareket ettirdim. */
+}
+
+/* Duyarlı Tasarım (Küçük Ekranlar İçin) */
+@media (max-width: 768px) { /* Ekran genişliği 768px veya daha az ise bu stilleri uyguladım. */
+    .kontrollerPaneli { /* HTML'deki 'kontrollerPaneli' sınıfına göre düzenledim. */
+        top: auto; /* Üst konumunu otomatik yaptım. */
+        bottom: 15px; /* Alttan 15px boşluk bıraktım. */
+        left: 50%; /* Soldan %50 konumlandırdım. */
+        transform: translateX(-50%); /* Yatayda ortalamak için kendisinin %50'si kadar sola kaydırdım. */
+        width: 90%; /* Genişliği %90 yaptım. */
+        max-width: 400px; /* Maksimum genişliği 400px yaptım. */
+        flex-direction: row; /* Öğeleri yatay hizaladım. */
+        flex-wrap: wrap; /* Öğelerin sarmalanmasına izin verdim. */
+        justify-content: center; /* İçeriği yatayda ortaladım. */
+        gap: 10px; /* Öğeler arasında 10px boşluk bıraktım. */
+        padding: 15px; /* İç boşluğu 15px yaptım. */
+    }
+
+    .kontrollerPaneli h2 { /* HTML'deki 'kontrollerPaneli' içindeki h2'ye göre düzenledim. */
+        width: 100%; /* Başlığın genişliğini %100 yaptım. */
+        margin-bottom: 10px; /* Alt kenar boşluğunu 10px yaptım. */
+    }
+
+    .kontrolGrubu { /* HTML'deki 'kontrolGrubu' sınıfına göre düzenledim. */
+        width: calc(50% - 10px); /* Kontrol grubunun genişliğini %50 eksi boşluk olarak ayarladım. */
+    }
+
+    .dugmeGrubu { /* HTML'deki 'dugmeGrubu' sınıfına göre düzenledim. */
+        width: 100%; /* Düğme grubunun genişliğini %100 yaptım. */
+    }
+}
+
+@media (max-width: 480px) { /* Ekran genişliği 480px veya daha az ise bu stilleri uyguladım. */
+    .kontrollerPaneli { /* HTML'deki 'kontrollerPaneli' sınıfına göre düzenledim. */
+        flex-direction: column; /* Öğeleri dikey hizaladım. */
+    }
+
+    .kontrolGrubu { /* HTML'deki 'kontrolGrubu' sınıfına göre düzenledim. */
+        width: 100%; /* Kontrol grubunun genişliğini %100 yaptım. */
+    }
+}
